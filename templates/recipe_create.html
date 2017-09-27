@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-content">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row bottom-border">
+                    <div class="col-md-12 top-padding-15">
+                        <span class="pull-left">
+                            <h4><a href="{% url 'main' %}">Главная</a> / <a href="{% url 'menu_list' %}">Меню</a> / Создание записи</h4>
+                        </span>
+                    </div>
+                </div>
+                <form method="post" enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% for field in form_part1 %}
+                            <div class="form-group">
+                                {% if field not in form.hidden_fields %}
+                                    <label>{{ field.label_tag }}</label>
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <ul>
+                                        {% for error in field.errors %}
+                                            <li class="error">{{ error }}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                {% else %}
+                                    {{ field }}
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            {% for field in form_part2 %}
+                            <div class="form-group">
+                                {% if field not in form.hidden_fields %}
+                                    <label>{{ field.label_tag }}</label>
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <ul>
+                                        {% for error in field.errors %}
+                                            <li class="error">{{ error }}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                {% else %}
+                                    {{ field }}
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-success">Создать</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

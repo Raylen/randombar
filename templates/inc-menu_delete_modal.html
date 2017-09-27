@@ -1,0 +1,26 @@
+<div class="modal fade" id="menu_delete_modal" name="menu_delete_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">x</button>
+                <h4 class="modal-title text-center" id="myModalLabel">Удаление записи</h4>
+            </div>
+            <div class="modal-body">
+                <form id="menu_delete_form" action="{% url 'menu_delete' entry_id %}" method="post" role="form">
+                    <fieldset>
+                        {% csrf_token %}
+                        <p>Вы уверены, что хотите удалить данную запись? Это действие необратимо!</p>
+                        <div class="btn-toolbar pull-right">
+                            <button type="button" class="btn btn-default btn-o" data-dismiss="modal">
+                                Отмена
+                            </button>
+                            <button type="submit" class="btn btn-danger pull-right">
+                                Удалить
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

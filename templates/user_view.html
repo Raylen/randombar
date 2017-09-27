@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="main-content">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row bottom-border">
+                    <div class="col-md-12 top-padding-15">
+                        <span class="pull-left">
+                            <h4><a href="{% url 'main' %}">Главная</a> / Личный кабинет</h4>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>Любимые напитки</h4>
+                        {% if favourite_drinks %}
+                        <div class="box">
+                            {% for drink in favourite_drinks %}
+                            <span>
+                                <span class="pull-left">
+                                    <a href="{% url 'menu_entry' drink.id %}">{{ drink.name }}</a>
+                                </span>
+                                <span class="pull-right">{{ drink.price }}</span>
+                                <div class="clearfix"></div>
+                            </span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Любимые закуски</h4>
+                        {% if favourite_meals %}
+                        <div class="box">
+                            {% for meal in favourite_meals %}
+                            <span>
+                                <span class="pull-left">
+                                    <a href="{% url 'menu_entry' meal.id %}">{{ meal.name }}</a>
+                                </span>
+                                <span class="pull-right">{{ meal.price }}</span>
+                                <div class="clearfix"></div>
+                            </span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Любимые игры</h4>
+                        {% if favourite_games %}
+                        <div class="box">
+                            {% for game in favourite_games %}
+                                <a href="{% url 'games_entry' game.id %}">{{ game.name }}</a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3">
+                        <h4>События</h4>
+                        {% if events %}
+                        <div class="box">
+                            {% for event in events %}
+                                <a href="{% url 'events_entry' event.id %}">{{ event.name }}</a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

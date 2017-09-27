@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="main-content">
+        <div class="col-md-4 col-md-offset-4 top-padding-15">
+            <form id="registration_form" action="{% url 'registration' %}" method="post" role="form" name="registration_form">
+                <fieldset>
+                    {% include 'inc-registration_form.html' %}
+                    <div class="btn-toolbar pull-right">
+                        <button type="reset" class="btn btn-primary btn-o" id="form_reset">
+                            Очистить
+                        </button>
+                        <button class="btn btn-primary pull-right" id="registration_submit" type="submit">
+                            Сохранить
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}

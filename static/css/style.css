@@ -1,0 +1,151 @@
+html {
+    height: 100%;
+}
+
+body {
+	background-color: aliceblue;
+    height: 100%;
+	display: flex;
+	flex-direction: column;
+    color: #2C3390;
+}
+
+.menu {
+	list-style: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.menu > li {
+    padding: 10px;
+}
+
+.menu > li > p {
+	color: #041a44;
+	text-decoration-style: double;
+	text-decoration-line: underline;
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+.menu > li > a, .menu_2col > li > a {
+	color: #041a44;
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+.menu > li > a:hover, .menu_2col > li > a:hover {
+	color:green;
+}
+
+.photo {
+	border: 2px solid black;
+    margin-bottom: 20px;
+}
+
+.stats {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer {
+	height: 60px;
+	background-color: #4E9DC9;
+	padding: 10px 10px 0 0;
+	text-align: right;
+}
+
+.container {
+	width: 100%;
+	margin: auto;
+    flex: 1 0 auto;
+}
+
+.right-column {
+    border-left: 1px solid black;
+}
+
+.top-navbar {
+    background-color: #4E9DC9;
+    padding: 5px 30px;
+}
+
+.welcome-logo {
+    display: block;
+    margin: auto;
+}
+
+.top-padding-15 {
+    padding-top: 15px;
+}
+
+li.error {
+    list-style: none;
+    color: darkred;
+    padding-left: 20px;
+}
+
+input.error {
+    border-color: darkred;
+}
+
+.box {
+    border: 1px solid darkslateblue;
+    margin: 10px auto;
+    padding: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.box img {
+    display: block;
+    margin: auto;
+}
+
+.box p {
+    color: #000000;
+}
+
+.required {
+    color: darkred;
+}
+
+.bottom-border {
+    border-bottom: 1px solid darkblue;
+    margin-bottom: 10px;
+}
+
+.index-menu-text {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.gray-text {
+    color: gray;
+}
+
+.white-text {
+    color: #ffffff;
+}
+
+.list-image {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+@media(min-width: 975px){
+    .list-image {
+        width: 150px;
+        height: 150px;
+    }
+}
+@media(min-width: 1280px){
+    .list-image {
+        width: 200px;
+        height: 200px;
+    }
+}

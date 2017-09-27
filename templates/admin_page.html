@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="main-content">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="row bottom-border">
+                        <div class="col-md-12 top-padding-15">
+                            <span class="pull-left">
+                                <h4><a href="{% url 'main' %}">Главная</a> / Панель управления</h4>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Объект</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="{% url 'users_list' %}">Пользователи</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="{% url 'admin_menu_list' %}">Меню</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="{% url 'admin_games_list' %}">Настольные игры</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="{% url 'admin_events_list' %}">События</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

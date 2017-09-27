@@ -1,0 +1,29 @@
+<h4>Список пользователей</h4>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Объект</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users_list %}
+                <tr>
+                    <td>
+                        {{ user.username }} ({{ user.email }})
+                    </td>
+                    <td>
+                        <a onclick="delete_user({{ user.id }})" class="btn btn-danger"><!-- {% url 'delete_user' user.id %} -->
+                            <i class="fa fa-times"></i>
+                        </a>
+                        <a onclick="fill_form({{ user.id }})" class="btn btn-primary">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="modal fade" id="event_delete_modal" name="event_delete_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">x</button>
+                <h4 class="modal-title text-center" id="myModalLabel">Удаление события</h4>
+            </div>
+            <div class="modal-body">
+                <form id="event_delete_form" action="{% url 'events_delete' event_id %}" method="post" role="form">
+                    <fieldset>
+                        {% csrf_token %}
+                        <p>Вы уверены, что хотите удалить данное событие? Это действие необратимо!</p>
+                        <div class="btn-toolbar pull-right">
+                            <button type="button" class="btn btn-default btn-o" data-dismiss="modal">
+                                Отмена
+                            </button>
+                            <button type="submit" class="btn btn-danger pull-right">
+                                Удалить
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

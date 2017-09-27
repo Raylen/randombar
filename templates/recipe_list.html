@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="main-content">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row bottom-border">
+                    <div class="col-md-12 top-padding-15">
+                        <span class="pull-left">
+                            <h4><a href="{% url 'main' %}">Главная</a> / Меню</h4>
+                        </span>
+                        {% if request.user.is_superuser %}
+                            <span class="pull-right">
+                                <a href="/menu/create/" class="btn btn-success">
+                                    <i class="fa fa-plus"></i> Добавить
+                                </a>
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% for row in rows %}
+                    <div class="row">
+                    {% for entry in row %}
+                        <div class="col-md-4">
+                            <div class="box">
+                                <img src="{% if entry.photo %}{{ entry.photo.url }}
+                                          {% else %}{% static 'img/bar_logo_bw_200.gif' %}
+                                          {% endif %}" class="list-image"
+                                     alt="{{ entry.description }}"/>
+
+                                <span class="{% if entry.volume == 0 %}gray-text{% endif %}">
+                                    <i>
+                                        <span class="pull-left">
+                                            <a href="{% url 'menu_entry' entry.id %}">{{ entry.name }}</a>
+                                        </span>
+                                        <span class="pull-right">{{ entry.price }} руб.</span>
+                                    </i>
+                                    <div class="clearfix"></div>
+                                </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+                {% include 'inc-pagination.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

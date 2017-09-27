@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<div class="col-sm-12 top-navbar">
+    <a href="{% url 'main' %}"><img src="{% static 'img/bar_logo_small.gif' %}" height="34" /></a>
+    <div class="pull-right">
+    {% if request.user.is_anonymous %}
+        {% include 'inc-login_form.html' %}
+        Привет, незнакомец!&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-wide btn-success" data-toggle="modal" data-target="#login_modal">
+            Войти
+        </a>
+        <a href="{% url 'registration' %}" class="btn btn-primary">
+            Регистрация
+        </a>
+    {% else %}
+        Привет, <a href="{% url 'user_view' %}" class="white-text">{{ request.user.username }}</a>!&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'logout' %}" class="btn btn-wide btn-danger">
+            Выйти
+        </a>
+        {% if request.user.is_superuser %}
+            <a href="{% url 'admin' %}" class="btn btn-wide btn-primary">
+                Администрирование
+            </a>
+        {% endif %}
+    {% endif %}
+    </div>
+</div>

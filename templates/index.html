@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="main-content">
+        <div class="col-md-12">
+            <div class="row">
+                <img src="{% static 'img/bar_logo_welcome.gif' %}" width="540" height="450" class="welcome-logo" />
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <a href="{% url 'menu_list' %}">
+                        <img src="{% static 'img/menu_index_200.gif' %}" alt="Меню"/>
+                        <i class="index-menu-text">Меню</i>
+                    </a>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <a href="{% url 'games_list' %}">
+                        <img src="{% static 'img/board_games_index_200.gif' %}" alt="Игры"/>
+                        <i class="index-menu-text">Игры</i>
+                    </a>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <a href="{% url 'events_list' %}">
+                        <img src="{% static 'img/events_index_200.gif' %}" alt="События"/>
+                        <i class="index-menu-text">События</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

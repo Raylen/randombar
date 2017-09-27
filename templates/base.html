@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>RandomBar | {{ title }}</title>
+        <link rel="stylesheet" href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                {% include 'top-navbar.html' %}
+            </div>
+            <div class="row">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <hr/>
+        <div class="footer">
+            <p>&copy; Все права защищены</p>
+        </div>
+
+        <script src="{% static 'vendors/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendors/bootstrap/js/bootstrap.min.js' %}"></script>
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>

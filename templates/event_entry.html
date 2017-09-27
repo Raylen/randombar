@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="main-content">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row bottom-border">
+                    <div class="col-md-12 top-padding-15">
+                        <span class="pull-left">
+                            <h4><a href="{% url 'main' %}">Главная</a> / <a href="{% url 'events_list' %}">События</a> / Просмотр события</h4>
+                        </span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="{% if event.photo %}{{ event.photo.url }}
+                                      {% else %}{% static 'img/bar_logo_bw_200.gif' %}
+                                      {% endif %}" height="200" width="200" alt="{{ event.name }}"/>
+                        </div>
+                        <div class="col-md-9">
+                            {% if request.user.is_superuser %}
+                                {% include 'inc-event_delete_modal.html' %}
+                                <span class="pull-right">
+                                    <a data-toggle="modal" data-target="#event_delete_modal" class="btn btn-danger">
+                                        <i class="fa fa-times"></i> Удалить
+                                    </a>
+                                </span>
+                            {% endif %}
+                            <p>{{ event.name }}</p>
+                            <p><i>Когда?:</i> <b>{{ event.date_start }} - {{ event.date_end }}</b></p>
+                            <p><i>Плата за участие:</i> <b>{{ event.price|default_if_none:"Бесплатно!" }}</b></p>
+                            {% if event.game %}
+                                <p>
+                                    <i>Игра:</i> <b>
+                                        <a href="{% url 'games_entry' event.game.id %}">
+                                            {{ event.game.name }}
+                                        </a>
+                                    </b>
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>{{ event.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

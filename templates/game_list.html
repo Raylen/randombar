@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="main-content">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row bottom-border">
+                    <div class="col-md-12 top-padding-15">
+                        <span class="pull-left">
+                            <h4><a href="{% url 'main' %}">Главная</a> / Настольные игры</h4>
+                        </span>
+                        {% if request.user.is_superuser %}
+                            <span class="pull-right">
+                                <a href="/games/create/" class="btn btn-success">
+                                    <i class="fa fa-plus"></i> Добавить
+                                </a>
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% for entry in entries_list %}
+                    <div class="box row">
+                        <div class="col-md-3">
+                            <img src="{% if entry.photo %}{{ entry.photo.url }}
+                                      {% else %}{% static 'img/bar_logo_bw_200.gif' %}
+                                      {% endif %}" class="list-image"
+                                 alt="{{ entry.name }}"/>
+                        </div>
+                        <div class="col-md-9">
+                            <p><a href="{% url 'games_entry' entry.id %}">{{ entry.name }}</a></p>
+                            <p><i>Наличие:</i> <i class="fa {% if entry.availability %}fa-check{% else %}fa-times{% endif %}"></i></p>
+                            <p>{{ entry.description|truncatewords:"20" }}</p>
+                            {% if entry.description|wordcount > 20 %}
+                                <a href="{% url 'games_entry' entry.id %}">Читать далее...</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% include 'inc-pagination.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

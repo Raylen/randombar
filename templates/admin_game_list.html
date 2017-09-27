@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="main-content">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="row bottom-border">
+                        <div class="col-md-12 top-padding-15">
+                            <span class="pull-left">
+                                <h4><a href="{% url 'main' %}">Главная</a> / <a href="{% url 'admin' %}">Панель управления</a> / Настольные игры</h4>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" id="game_list">
+                            {% include 'inc-admin_object_list.html' %}
+                        </div>
+                        <div class="col-md-6">
+                            <form id="game_form" method="post" role="form" name="game_form" novalidate>
+                                <fieldset>
+                                    <div id="form_anchor">
+                                        {% include 'inc-admin_object_create_form.html' %}
+                                    </div>
+                                </fieldset>
+                                {% include 'inc-admin_object_delete_modal.html' %}
+                            </form>
+                            <div class="btn-toolbar pull-right">
+                                <button class="btn btn-primary btn-o" onclick="reset_form()" id="form_reset">
+                                    Очистить
+                                </button>
+                                <button class="btn btn-primary pull-right" onclick="send_data()">
+                                    Сохранить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="/static/js/admin_games.js"></script>
+{% endblock %}
